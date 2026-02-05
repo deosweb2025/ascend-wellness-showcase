@@ -125,7 +125,7 @@ export const Footer = () => {
         <div className="border-t border-background/10 mt-12 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-background/50 text-sm text-center md:text-left">
-              © {new Date().getFullYear()} ASCEND – Premium Rehabilitation Centre. All Rights Reserved.
+              © {new Date().getFullYear()} ASCEND – Premium Rehabilitation Centre. All Rights Reserved. || Developed & Maintained by <a href="https://teamdeos.co.in/" target="_blank"><span className="text-accent font-semibold">Digital Exposure Online Services</span></a>
             </p>
             <div className="flex items-center gap-6 text-sm text-background/50">
               <span>Best Rehabilitation Centre in Kolkata</span>
