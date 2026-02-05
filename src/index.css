@@ -236,7 +236,7 @@
 
   /* Gallery image hover */
   .gallery-item {
-    @apply overflow-hidden rounded-2xl cursor-pointer relative group;
+    @apply overflow-hidden rounded-2xl cursor-pointer relative ;
   }
 
   .gallery-item img {
