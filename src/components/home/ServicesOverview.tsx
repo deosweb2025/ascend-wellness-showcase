@@ -1,14 +1,18 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Brain, Home, Building, Sun, Users, Heart } from "lucide-react";
-import serviceOpd from "@/assets/service-opd.jpg";
-import serviceTherapy from "@/assets/service-therapy.jpg";
-import serviceFamily from "@/assets/service-family.jpg";
-import serviceDaycare from "@/assets/service-daycare.jpg";
+
+// Direct imports (they'll still load but we'll control timing)
+import serviceOpd from "@/assets/services/2 (4).jpg";
+import serviceOpd2 from "@/assets/services/7110794.jpg";
+import serviceTherapy from "@/assets/services/2111.q707.020.F.m004.c5.physiotherapy rehabilitation flat composition.jpg";
+import serviceFamily from "@/assets/services/2 (6).jpg";
+import serviceDaycare from "@/assets/services/6998497.jpg";
 
 const services = [
   {
+    id: "opd",
     icon: Brain,
     title: "Psychological & Psychiatric OPD",
     description:
@@ -16,6 +20,7 @@ const services = [
     image: serviceOpd,
   },
   {
+    id: "rehabilitation",
     icon: Home,
     title: "Premium In-House Rehabilitation",
     description:
@@ -23,13 +28,15 @@ const services = [
     image: serviceTherapy,
   },
   {
+    id: "outpatient",
     icon: Building,
     title: "Outpatient Department (OPD)",
     description:
       "Flexible treatment plans for those who prefer to receive care while maintaining their daily routines.",
-    image: serviceOpd,
+    image: serviceOpd2,
   },
   {
+    id: "daycare",
     icon: Sun,
     title: "Post-Rehabilitation Daycare",
     description:
@@ -37,6 +44,7 @@ const services = [
     image: serviceDaycare,
   },
   {
+    id: "family",
     icon: Users,
     title: "Family Support & Counselling",
     description:
@@ -44,6 +52,7 @@ const services = [
     image: serviceFamily,
   },
   {
+    id: "wellness",
     icon: Heart,
     title: "Holistic Wellness Programs",
     description:
@@ -51,6 +60,120 @@ const services = [
     image: serviceTherapy,
   },
 ];
+
+// Custom hook for individual card lazy loading
+const useLazyImage = (src, shouldLoad) => {
+  const [loaded, setLoaded] = useState(false);
+  const [imageSrc, setImageSrc] = useState(null);
+
+  useEffect(() => {
+    if (shouldLoad && !imageSrc) {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        setImageSrc(src);
+        setLoaded(true);
+      };
+      img.onerror = () => {
+        console.error('Failed to load image:', src);
+        setLoaded(true); // Still mark as loaded to hide spinner
+      };
+    }
+  }, [shouldLoad, src, imageSrc]);
+
+  return { imageSrc, loaded };
+};
+
+const ServiceCard = ({ service, index, sectionInView }) => {
+  const cardRef = useRef(null);
+  const [cardInView, setCardInView] = useState(false);
+  const { imageSrc, loaded } = useLazyImage(service.image, cardInView);
+
+  // Individual intersection observer for each card
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCardInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        root: null,
+        rootMargin: '100px 0px 100px 0px', // Load slightly before entering viewport
+        threshold: 0.1
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 40 }}
+      animate={sectionInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="service-card group"
+      style={{ contentVisibility: 'auto' }} // Chrome optimization
+    >
+      <div className="premium-card h-full flex flex-col">
+        {/* Image Container with Lazy Loading */}
+        <div className="service-card-image aspect-[16/10] relative overflow-hidden">
+          {/* Loading shimmer effect */}
+          {!loaded && (
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 bg-[length:200%_100%] animate-shimmer" />
+          )}
+          
+          {/* Image with priority for first 2 cards */}
+          {imageSrc && (
+            <img
+              src={imageSrc}
+              alt={service.title}
+              className={`w-full h-full object-cover transition-opacity duration-500 ${
+                loaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              loading={index < 2 ? "eager" : "lazy"} // First 2 images eager, rest lazy
+              decoding="async"
+              fetchPriority={index < 2 ? "high" : "low"}
+            />
+          )}
+          
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent" />
+        </div>
+
+        {/* Content */}
+        <div className="p-4 sm:p-6 flex flex-col flex-1">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+            <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+          </div>
+          <h3 className="font-display text-lg sm:text-xl text-foreground mb-2 sm:mb-3">
+            {service.title}
+          </h3>
+          <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed flex-1">
+            {service.description}
+          </p>
+          <Link
+            to={`/services#${service.id}`}
+            className="inline-flex items-center gap-2 text-primary text-xs sm:text-sm font-medium mt-3 sm:mt-4 group-hover:gap-3 transition-all duration-300"
+          >
+            Learn More
+            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+          </Link>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export const ServicesOverview = () => {
   const ref = useRef(null);
@@ -80,47 +203,15 @@ export const ServicesOverview = () => {
           </p>
         </motion.div>
 
-        {/* Services Grid */}
+        {/* Services Grid with staggered rendering */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="service-card group"
-            >
-              <div className="premium-card h-full flex flex-col">
-                {/* Image */}
-                <div className="service-card-image aspect-[16/10]">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="p-4 sm:p-6 flex flex-col flex-1">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-primary/20 transition-colors duration-300">
-                    <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-                  </div>
-                  <h3 className="font-display text-lg sm:text-xl text-foreground mb-2 sm:mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed flex-1">
-                    {service.description}
-                  </p>
-                  <Link
-                    to="/services"
-                    className="inline-flex items-center gap-2 text-primary text-xs sm:text-sm font-medium mt-3 sm:mt-4 group-hover:gap-3 transition-all duration-300"
-                  >
-                    Learn More
-                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
+            <ServiceCard
+              key={service.id}
+              service={service}
+              index={index}
+              sectionInView={isInView}
+            />
           ))}
         </div>
 
