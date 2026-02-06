@@ -40,7 +40,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <img src={logo} alt="ASCEND" className="h-14 w-auto mb-6 brightness-0 invert" />
+            <img src={logo} alt="ASCEND" className="h-14 w-auto mb-6 " />
             <p className="text-background/70 text-sm leading-relaxed mb-6">
               ASCEND is a premium rehabilitation centre in Salt Lake, Kolkata,
               offering world-class recovery programs with compassion and expertise.
