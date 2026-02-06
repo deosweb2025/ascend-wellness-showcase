@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { PageLayout } from "@/components/layout";
 import { Link } from "react-router-dom";
 import { ArrowRight, Heart, Shield, Users, Target } from "lucide-react";
@@ -34,6 +34,9 @@ const values = [
 ];
 
 const About = () => {
+  useEffect(() =>{
+    window.scrollTo(0,0);
+  },[])
   const storyRef = useRef(null);
   const storyInView = useInView(storyRef, { once: true, margin: "-100px" });
   

@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { PageLayout } from "@/components/layout";
 import {
   Brain,
@@ -128,7 +128,9 @@ const ServiceCard = ({
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
+  useEffect(() =>{
+        window.scrollTo(0,0);
+      },[]);
   return (
     <section
       ref={ref}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { PageLayout } from "@/components/layout";
 import { Phone, Mail, MapPin, Clock, Send, ArrowRight } from "lucide-react";
@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-contact.jpg";
 
 const Contact = () => {
+   useEffect(() =>{
+      window.scrollTo(0,0);
+    },[])
   const [formData, setFormData] = useState({
     name: "",
     email: "",

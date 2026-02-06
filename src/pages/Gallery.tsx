@@ -144,6 +144,9 @@ const foodImages: GalleryImage[] = [
 const allImages = [...interiorImages, ...foodImages];
 
 const Gallery = () => {
+  useEffect(() =>{
+      window.scrollTo(0,0);
+    },[])
   const [activeTab, setActiveTab] = useState<Tab>("all");
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState(0);

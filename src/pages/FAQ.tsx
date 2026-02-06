@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { Link } from "react-router-dom";
 import { ArrowRight, HelpCircle } from "lucide-react";
+import { useEffect } from "react";
 
 const faqs = [
   {
@@ -63,6 +64,9 @@ const faqs = [
 ];
 
 const FAQ = () => {
+   useEffect(() =>{
+      window.scrollTo(0,0);
+    },[])
   return (
     <PageLayout>
       {/* Hero Section */}
