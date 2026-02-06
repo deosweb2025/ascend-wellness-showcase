@@ -47,18 +47,18 @@ export const TestimonialsSection = () => {
 
   return (
     <section ref={ref} className="section-padding bg-background">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-10 sm:mb-16"
         >
-          <span className="text-primary text-sm uppercase tracking-[0.2em] font-medium">
+          <span className="text-primary text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] font-medium">
             Testimonials
           </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mt-3">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground mt-2 sm:mt-3">
             Stories of <span className="gradient-text">Transformation</span>
           </h2>
         </motion.div>
@@ -78,17 +78,17 @@ export const TestimonialsSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.5 }}
-                className="testimonial-card text-center"
+                className="testimonial-card text-center px-2 sm:px-4"
               >
-                <Quote className="w-12 h-12 text-primary/30 mx-auto mb-6" />
-                <p className="text-lg md:text-xl lg:text-2xl text-foreground/80 font-display italic leading-relaxed mb-8">
+                <Quote className="w-8 h-8 sm:w-12 sm:h-12 text-primary/30 mx-auto mb-4 sm:mb-6" />
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/80 font-display italic leading-relaxed mb-6 sm:mb-8">
                   "{testimonials[currentIndex].quote}"
                 </p>
                 <div>
-                  <p className="font-display text-xl text-foreground">
+                  <p className="font-display text-lg sm:text-xl text-foreground">
                     {testimonials[currentIndex].name}
                   </p>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-muted-foreground text-xs sm:text-sm">
                     {testimonials[currentIndex].location}
                   </p>
                 </div>
@@ -96,25 +96,25 @@ export const TestimonialsSection = () => {
             </AnimatePresence>
 
             {/* Navigation */}
-            <div className="flex items-center justify-center gap-4 mt-10">
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mt-8 sm:mt-10">
               <button
                 onClick={prev}
-                className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
                 aria-label="Previous testimonial"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
               {/* Dots */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    className={`h-2 rounded-full transition-all duration-300 ${
                       index === currentIndex
-                        ? "w-8 bg-primary"
-                        : "bg-border hover:bg-muted-foreground"
+                        ? "w-6 sm:w-8 bg-primary"
+                        : "w-2 bg-border hover:bg-muted-foreground"
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -123,10 +123,10 @@ export const TestimonialsSection = () => {
 
               <button
                 onClick={next}
-                className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
                 aria-label="Next testimonial"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
           </div>

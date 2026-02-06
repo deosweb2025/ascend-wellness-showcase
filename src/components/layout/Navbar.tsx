@@ -42,14 +42,14 @@ export const Navbar = () => {
             : "bg-transparent py-5"
         }`}
       >
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-8">
           <nav className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
               <img
                 src={logo}
                 alt="ASCEND Premium Rehabilitation Centre"
-                className="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+                className="h-10 sm:h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
 
@@ -113,7 +113,7 @@ export const Navbar = () => {
               className="absolute inset-0 bg-foreground/20 backdrop-blur-sm"
               onClick={() => setIsMobileMenuOpen(false)}
             />
-            <div className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-background shadow-elevated p-8 pt-24">
+            <div className="absolute right-0 top-0 bottom-0 w-72 sm:w-80 max-w-[90vw] bg-background shadow-elevated p-6 sm:p-8 pt-20 sm:pt-24">
               <nav className="flex flex-col gap-6">
                 {navLinks.map((link, index) => (
                   <motion.div

@@ -11,7 +11,7 @@ export const CTASection = () => {
   return (
     <section
       ref={ref}
-      className="relative py-24 md:py-32 lg:py-40 overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-32 lg:py-40 overflow-hidden"
     >
       {/* Parallax Background */}
       <div
@@ -21,18 +21,18 @@ export const CTASection = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-primary/85 to-primary/70" />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl mx-auto"
+          className="max-w-3xl mx-auto px-2"
         >
           <motion.h2
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-6"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-4 sm:mb-6"
           >
             Let Us Walk the Path of
             <br />
@@ -42,7 +42,7 @@ export const CTASection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-primary-foreground/80 text-lg md:text-xl mb-10"
+            className="text-primary-foreground/80 text-base sm:text-lg md:text-xl mb-8 sm:mb-10"
           >
             Take the first step towards a healthier, happier life. Our
             compassionate team is here to support you every step of the way.
@@ -54,10 +54,10 @@ export const CTASection = () => {
           >
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 bg-primary-foreground text-primary px-10 py-5 rounded-full font-medium text-lg transition-all duration-300 hover:shadow-elevated hover:scale-105"
+              className="group inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary px-6 sm:px-10 py-4 sm:py-5 rounded-full font-medium text-base sm:text-lg transition-all duration-300 hover:shadow-elevated hover:scale-105 w-full sm:w-auto"
             >
               Book Your Session Today
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
         </motion.div>
