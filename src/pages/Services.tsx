@@ -12,13 +12,11 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero2.jpeg";
-import serviceOpd from "@/assets/services/2 (4).jpg";
-import serviceOpd2 from "@/assets/services/2111.q707.020.F.m004.c5.physiotherapy rehabilitation flat composition.jpg";
-import serviceTherapy from "@/assets/services/2 (5).jpg";
-import serviceTherapy2 from "@/assets/services/8443631.jpg";
-import serviceFamily from "@/assets/services/2 (6).jpg";
-import serviceDaycare from "@/assets/services/6998497.jpg";
+import heroImage from "@/assets/hero-services.jpg";
+import serviceOpd from "@/assets/service-opd.jpg";
+import serviceTherapy from "@/assets/service-therapy.jpg";
+import serviceFamily from "@/assets/service-family.jpg";
+import serviceDaycare from "@/assets/service-daycare.jpg";
 
 const services = [
   {
@@ -67,7 +65,7 @@ const services = [
       "Progress monitoring",
       "Community support groups",
     ],
-    image: serviceOpd2,
+    image: serviceOpd,
   },
   {
     id: "daycare",
@@ -115,7 +113,7 @@ const services = [
       "Social skills development",
       "Community outreach",
     ],
-    image: serviceTherapy2,
+    image: serviceTherapy,
   },
 ];
 
@@ -130,9 +128,9 @@ const ServiceCard = ({
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useEffect(() =>{
+        window.scrollTo(0,0);
+      },[]);
   return (
     <section
       ref={ref}
@@ -187,9 +185,7 @@ const ServiceCard = ({
               {service.features.map((feature) => (
                 <li key={feature} className="flex items-center gap-2 sm:gap-3">
                   <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full flex-shrink-0" />
-                  <span className="text-foreground/80 text-sm sm:text-base">
-                    {feature}
-                  </span>
+                  <span className="text-foreground/80 text-sm sm:text-base">{feature}</span>
                 </li>
               ))}
             </ul>
@@ -213,48 +209,27 @@ const Services = () => {
     <PageLayout>
       {/* Hero Section */}
       <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50">
-          {/* Vector image container - adjust positioning as needed */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-10 sm:opacity-20">
-            <img
-              src={heroImage} // Your vector image
-              alt="ASCEND Services Background"
-              className="w-full h-full object-contain scale-125"
-            />
-          </div>
-
-          {/* Optional gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-transparent" />
+        <div className="absolute inset-0">
+          <img
+            src={heroImage}
+            alt="ASCEND Services"
+            className="w-full h-full object-cover"
+          />
+          <div className="hero-overlay absolute inset-0" />
         </div>
-
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center pt-16 sm:pt-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col items-center"
           >
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gray-900 mb-4 sm:mb-6">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4 sm:mb-6">
               Our Services
             </h1>
-            <p className="text-gray-700 text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-2 mb-8">
+            <p className="text-primary-foreground/80 text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-2">
               Comprehensive rehabilitation programs designed to support your
               journey to recovery with compassion and expertise.
             </p>
-
-            {/* Optional: Add the vector image as a decorative element */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="w-full max-w-md md:max-w-lg lg:max-w-xl"
-            >
-              <img
-                src={heroImage}
-                alt="ASCEND Services Illustration"
-                className="w-full h-auto"
-              />
-            </motion.div>
           </motion.div>
         </div>
       </section>

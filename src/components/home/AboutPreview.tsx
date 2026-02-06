@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import aboutImage from "@/assets/services/6998497.jpg";
+import aboutImage from "@/assets/about-preview.jpg";
 
 export const AboutPreview = () => {
   const ref = useRef(null);
@@ -19,7 +19,7 @@ export const AboutPreview = () => {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative rounded-3xl overflow-hidden  shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden shadow-elevated">
               <img
                 src={aboutImage}
                 alt="Premium healthcare at ASCEND"

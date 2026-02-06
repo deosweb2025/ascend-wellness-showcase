@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { PageLayout } from "@/components/layout";
 import { Link } from "react-router-dom";
 import { ArrowRight, Heart, Shield, Users, Target } from "lucide-react";
-import heroImage from "@/assets/hero3.jpeg";
+import heroImage from "@/assets/hero-about.jpg";
 import aboutPreview from "@/assets/about-preview.jpg";
 
 const values = [
