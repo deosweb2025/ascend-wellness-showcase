@@ -62,7 +62,7 @@ const Counter = ({
   }, [inView, value]);
 
   return (
-    <span className="stat-number">
+    <span className="stat-number text-2xl sm:text-3xl md:text-4xl">
       {count}
       {suffix}
     </span>
@@ -75,23 +75,23 @@ export const StatsSection = () => {
 
   return (
     <section ref={ref} className="section-padding-sm bg-secondary/50">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-12">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="text-center"
+              className="text-center p-3 sm:p-4"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-4">
-                <stat.icon className="w-8 h-8 text-primary" />
+              <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-xl sm:rounded-2xl mb-3 sm:mb-4">
+                <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
               </div>
-              <div className="mb-2">
+              <div className="mb-1 sm:mb-2">
                 <Counter value={stat.value} suffix={stat.suffix} inView={isInView} />
               </div>
-              <p className="text-muted-foreground text-sm font-medium">{stat.label}</p>
+              <p className="text-muted-foreground text-xs sm:text-sm font-medium">{stat.label}</p>
             </motion.div>
           ))}
         </div>

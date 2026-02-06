@@ -234,7 +234,7 @@ const Gallery = () => {
   return (
     <PageLayout>
       {/* Enhanced Hero Section with Parallax */}
-      <section className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[50vh] sm:min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 parallax-bg">
           <motion.img
             src={heroImage}
@@ -250,10 +250,10 @@ const Gallery = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative z-10 container mx-auto px-4 lg:px-8 text-center pt-24"
+          className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 sm:pt-24"
         >
           <div className="text-reveal">
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground mb-6 tracking-tight">
+            <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-primary-foreground mb-4 sm:mb-6 tracking-tight">
               Our Gallery
             </h1>
           </div>
@@ -261,7 +261,7 @@ const Gallery = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-primary-foreground/90 text-xl md:text-2xl max-w-3xl mx-auto mb-8 leading-relaxed"
+            className="text-primary-foreground/90 text-base sm:text-xl md:text-2xl max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2"
           >
             Experience our world-class facilities and healing environment through our visual journey
           </motion.p>
@@ -269,13 +269,13 @@ const Gallery = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="inline-flex gap-3 bg-foreground/10 backdrop-blur-sm rounded-full px-6 py-3"
+            className="inline-flex gap-2 sm:gap-3 bg-foreground/10 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3"
           >
-            <span className="text-primary-foreground font-medium">
+            <span className="text-primary-foreground font-medium text-sm sm:text-base">
               {allImages.length} Photos
             </span>
             <span className="text-primary-foreground/70">•</span>
-            <span className="text-primary-foreground/80">
+            <span className="text-primary-foreground/80 text-sm sm:text-base">
               Updated regularly
             </span>
           </motion.div>
@@ -283,17 +283,17 @@ const Gallery = () => {
       </section>
 
       {/* Featured Images Carousel */}
-      <section className="py-12 bg-gradient-to-b from-secondary/30 to-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+      <section className="py-8 sm:py-12 bg-gradient-to-b from-secondary/30 to-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-foreground mb-3 sm:mb-4">
               Featured Highlights
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base px-2">
               Discover our most cherished spaces and experiences
             </p>
           </div>
-          <div className="flex overflow-x-auto gap-6 pb-6 scrollbar-hide scroll-smooth">
+          <div className="flex overflow-x-auto gap-4 sm:gap-6 pb-4 sm:pb-6 scrollbar-hide scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0">
             {featuredImages.map((image, index) => (
               <motion.div
                 key={image.src}
@@ -301,7 +301,7 @@ const Gallery = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex-shrink-0 w-80 rounded-2xl overflow-hidden group cursor-pointer"
+                className="flex-shrink-0 w-64 sm:w-80 rounded-xl sm:rounded-2xl overflow-hidden group cursor-pointer"
                 onClick={() => handleImageClick(image, index)}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
@@ -311,12 +311,12 @@ const Gallery = () => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     whileHover={{ scale: 1.05 }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
                     <div>
-                      <p className="text-primary-foreground font-display text-lg font-medium">
+                      <p className="text-primary-foreground font-display text-base sm:text-lg font-medium">
                         {image.title}
                       </p>
-                      <p className="text-primary-foreground/80 text-sm">
+                      <p className="text-primary-foreground/80 text-xs sm:text-sm">
                         {image.category}
                       </p>
                     </div>
@@ -330,21 +330,22 @@ const Gallery = () => {
 
       {/* Gallery Section */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Enhanced Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setActiveTab(category.id as Tab)}
-                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 flex items-center gap-2 ${
+                className={`px-3 sm:px-6 py-2 sm:py-3 rounded-full font-medium text-xs sm:text-sm transition-all duration-300 flex items-center gap-1.5 sm:gap-2 ${
                   activeTab === category.id
                     ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
                     : "bg-secondary/50 text-foreground hover:bg-secondary hover:shadow"
                 }`}
               >
-                {category.label}
-                <span className={`px-2 py-0.5 rounded-full text-xs ${
+                <span className="hidden sm:inline">{category.label}</span>
+                <span className="sm:hidden">{category.id === "all" ? "All" : category.id === "interior" ? "Interior" : category.id === "food" ? "Food" : category.id === "accommodation" ? "Rooms" : "Common"}</span>
+                <span className={`px-1.5 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs ${
                   activeTab === category.id 
                     ? "bg-primary-foreground/20 text-primary-foreground"
                     : "bg-foreground/10 text-foreground"
@@ -361,7 +362,7 @@ const Gallery = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6"
+            className="columns-1 sm:columns-2 lg:columns-3 gap-4 sm:gap-6 space-y-4 sm:space-y-6"
           >
             {filteredImages.map((image, index) => (
               <motion.div

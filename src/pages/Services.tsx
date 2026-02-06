@@ -135,9 +135,9 @@ const ServiceCard = ({
       id={service.id}
       className={`section-padding ${index % 2 === 0 ? "bg-background" : "bg-secondary/30"}`}
     >
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${
+          className={`grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center ${
             isReversed ? "lg:flex-row-reverse" : ""
           }`}
         >
@@ -148,7 +148,7 @@ const ServiceCard = ({
             transition={{ duration: 0.8 }}
             className={isReversed ? "lg:order-2" : ""}
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-elevated">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-elevated">
               <img
                 src={service.image}
                 alt={service.title}
@@ -165,32 +165,32 @@ const ServiceCard = ({
             transition={{ duration: 0.8, delay: 0.2 }}
             className={isReversed ? "lg:order-1" : ""}
           >
-            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-              <service.icon className="w-7 h-7 text-primary" />
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+              <service.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
             </div>
-            <span className="text-primary text-sm uppercase tracking-[0.2em] font-medium">
+            <span className="text-primary text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] font-medium">
               {service.subtitle}
             </span>
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mt-2 mb-6">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-foreground mt-2 mb-4 sm:mb-6">
               {service.title}
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
               {service.description}
             </p>
 
             {/* Features */}
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
               {service.features.map((feature) => (
-                <li key={feature} className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary rounded-full" />
-                  <span className="text-foreground/80">{feature}</span>
+                <li key={feature} className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full flex-shrink-0" />
+                  <span className="text-foreground/80 text-sm sm:text-base">{feature}</span>
                 </li>
               ))}
             </ul>
 
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-glow hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium text-sm sm:text-base transition-all duration-300 hover:shadow-glow hover:scale-105 w-full sm:w-auto"
             >
               Book Consultation
               <ArrowRight className="w-4 h-4" />
@@ -206,7 +206,7 @@ const Services = () => {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={heroImage}
@@ -215,16 +215,16 @@ const Services = () => {
           />
           <div className="hero-overlay absolute inset-0" />
         </div>
-        <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center pt-20">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center pt-16 sm:pt-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-6">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4 sm:mb-6">
               Our Services
             </h1>
-            <p className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto">
+            <p className="text-primary-foreground/80 text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-2">
               Comprehensive rehabilitation programs designed to support your
               journey to recovery with compassion and expertise.
             </p>
@@ -244,17 +244,17 @@ const Services = () => {
 
       {/* CTA */}
       <section className="section-padding bg-primary">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-primary-foreground mb-4 sm:mb-6">
             Ready to Begin Your Recovery Journey?
           </h2>
-          <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-primary-foreground/80 text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
             Our team is here to help you take the first step. Contact us for a
             confidential consultation.
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 bg-primary-foreground text-primary px-8 py-4 rounded-full font-medium transition-all duration-300 hover:shadow-elevated hover:scale-105"
+            className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base transition-all duration-300 hover:shadow-elevated hover:scale-105 w-full sm:w-auto max-w-xs mx-auto sm:max-w-none"
           >
             Contact Us Today
             <ArrowRight className="w-4 h-4" />

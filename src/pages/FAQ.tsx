@@ -66,21 +66,21 @@ const FAQ = () => {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="bg-secondary/50 pt-32 pb-16">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="bg-secondary/50 pt-24 sm:pt-32 pb-12 sm:pb-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-              <HelpCircle className="w-10 h-10 text-primary" />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+              <HelpCircle className="w-8 h-8 sm:w-10 sm:h-10 text-primary" />
             </div>
-            <h1 className="font-display text-4xl md:text-5xl text-foreground mb-6">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground mb-4 sm:mb-6">
               Frequently Asked Questions
             </h1>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-base sm:text-lg px-2">
               Find answers to common questions about our programs, facilities,
               and the recovery process at ASCEND.
             </p>
@@ -90,23 +90,23 @@ const FAQ = () => {
 
       {/* FAQ Section */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Accordion type="single" collapsible className="space-y-4">
+            <Accordion type="single" collapsible className="space-y-3 sm:space-y-4">
               {faqs.map((faq, index) => (
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="bg-card rounded-2xl border-none shadow-soft overflow-hidden"
+                  className="bg-card rounded-xl sm:rounded-2xl border-none shadow-soft overflow-hidden"
                 >
-                  <AccordionTrigger className="px-6 py-5 text-left font-display text-lg text-foreground hover:no-underline hover:bg-secondary/30 transition-colors">
+                  <AccordionTrigger className="px-4 sm:px-6 py-4 sm:py-5 text-left font-display text-base sm:text-lg text-foreground hover:no-underline hover:bg-secondary/30 transition-colors">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 pb-5 text-muted-foreground leading-relaxed">
+                  <AccordionContent className="px-4 sm:px-6 pb-4 sm:pb-5 text-muted-foreground leading-relaxed text-sm sm:text-base">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -119,14 +119,14 @@ const FAQ = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mt-16"
+            className="text-center mt-12 sm:mt-16"
           >
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">
               Still have questions? We're here to help.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium transition-all duration-300 hover:shadow-glow hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base transition-all duration-300 hover:shadow-glow hover:scale-105 w-full sm:w-auto max-w-xs mx-auto sm:max-w-none"
             >
               Contact Us
               <ArrowRight className="w-4 h-4" />

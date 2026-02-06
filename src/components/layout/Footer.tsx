@@ -30,18 +30,18 @@ export const Footer = () => {
       {/* Back to top button */}
       <button
         onClick={scrollToTop}
-        className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-elevated hover:scale-110 transition-transform duration-300"
+        className="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-elevated hover:scale-110 transition-transform duration-300"
         aria-label="Back to top"
       >
-        <ArrowUp className="w-5 h-5" />
+        <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />
       </button>
 
-      <div className="container mx-auto px-4 lg:px-8 pt-20 pb-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-8 sm:pb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-8">
           {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <img src={logo} alt="ASCEND" className="h-14 w-auto mb-6 " />
-            <p className="text-background/70 text-sm leading-relaxed mb-6">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <img src={logo} alt="ASCEND" className="h-12 sm:h-14 w-auto mb-4 sm:mb-6" />
+            <p className="text-background/70 text-sm leading-relaxed mb-4 sm:mb-6">
               ASCEND is a premium rehabilitation centre in Salt Lake, Kolkata,
               offering world-class recovery programs with compassion and expertise.
             </p>
@@ -52,8 +52,8 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-xl mb-6">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="font-display text-lg sm:text-xl mb-4 sm:mb-6">Quick Links</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.path}>
                   <Link
@@ -69,8 +69,8 @@ export const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-display text-xl mb-6">Our Services</h4>
-            <ul className="space-y-3">
+            <h4 className="font-display text-lg sm:text-xl mb-4 sm:mb-6">Our Services</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {services.map((service) => (
                 <li key={service}>
                   <span className="text-background/70 text-sm">{service}</span>
@@ -80,11 +80,11 @@ export const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h4 className="font-display text-xl mb-6">Contact Us</h4>
-            <ul className="space-y-4">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h4 className="font-display text-lg sm:text-xl mb-4 sm:mb-6">Contact Us</h4>
+            <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5 flex-shrink-0" />
                 <span className="text-background/70 text-sm">
                   FF3, Sector 3, Salt Lake,
                   <br />
@@ -92,7 +92,7 @@ export const Footer = () => {
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
                 <a
                   href="tel:+917003623807"
                   className="text-background/70 hover:text-background text-sm transition-colors"
@@ -101,16 +101,16 @@ export const Footer = () => {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-primary flex-shrink-0" />
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
                 <a
                   href="mailto:help@ascendindia.org.in"
-                  className="text-background/70 hover:text-background text-sm transition-colors"
+                  className="text-background/70 hover:text-background text-sm transition-colors break-all"
                 >
                   help@ascendindia.org.in
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5 flex-shrink-0" />
                 <div className="text-background/70 text-sm">
                   <p>Mon – Fri: 8:30 AM – 5:00 PM</p>
                   <p>Sat – Sun: Closed</p>
@@ -122,12 +122,12 @@ export const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-background/10 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-background/50 text-sm text-center md:text-left">
+        <div className="border-t border-background/10 mt-8 sm:mt-12 pt-6 sm:pt-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
+            <p className="text-background/50 text-xs sm:text-sm text-center md:text-left">
               © {new Date().getFullYear()} ASCEND – Premium Rehabilitation Centre. All Rights Reserved. || Developed & Maintained by <a href="https://teamdeos.co.in/" target="_blank"><span className="text-accent font-semibold">Digital Exposure Online Services</span></a>
             </p>
-            <div className="flex items-center gap-6 text-sm text-background/50">
+            <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm text-background/50">
               <span>Best Rehabilitation Centre in Kolkata</span>
             </div>
           </div>
