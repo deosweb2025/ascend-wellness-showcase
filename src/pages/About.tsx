@@ -141,7 +141,7 @@ const About = () => {
               className="text-center mb-8 sm:mb-12"
             >
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 sm:mb-6">
-                The 12-Step Philosophy
+                The 12-Step Programming
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg px-2">
                 A globally proven framework for lasting recovery
