@@ -17,6 +17,7 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +38,7 @@ export const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
+          isScrolled || !isHomePage
             ? "bg-background/95 backdrop-blur-md shadow-soft py-3"
             : "bg-transparent py-5"
         }`}
@@ -49,7 +50,7 @@ export const Navbar = () => {
               <img
                 src={logo}
                 alt="ASCEND Premium Rehabilitation Centre"
-                className="h-10 sm:h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+                className="h-12 sm:h-14 md:h-16 w-auto transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
 
@@ -62,9 +63,7 @@ export const Navbar = () => {
                   className={`nav-link text-sm font-medium tracking-wide uppercase ${
                     location.pathname === link.path
                       ? "text-primary active"
-                      : isScrolled
-                      ? "text-foreground/80"
-                      : "text-foreground/90"
+                      : "text-foreground/80"
                   }`}
                 >
                   {link.name}
