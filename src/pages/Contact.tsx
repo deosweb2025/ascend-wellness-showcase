@@ -155,7 +155,7 @@ const Contact = () => {
               {/* Map */}
               <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-soft">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.123456789012!2d88.39999999999999!3d22.579999999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDM0JzQ4LjAiTiA4OMKwMjQnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890123"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141.9773739027805!2d88.4218704!3d22.578039899999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275646218ad73%3A0x3e563a61738de83d!2sAscend%20Premium%20Rehabilitation%20Centre!5e1!3m2!1sen!2sin!4v1770790670855!5m2!1sen!2sin"
                   width="100%"
                   height="250"
                   style={{ border: 0 }}
