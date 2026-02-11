@@ -101,7 +101,7 @@ const About = () => {
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 sm:mb-6">
                 Understanding Addiction
                 <br />
-                <span className="gradient-text-dark">Beyond Substances</span>
+                <span className="gradient-text">Beyond Substances</span>
               </h2>
               <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
                 <p>
