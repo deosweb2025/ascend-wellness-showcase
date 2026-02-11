@@ -60,10 +60,14 @@ export const Navbar = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`nav-link text-sm font-medium tracking-wide uppercase ${
-                    location.pathname === link.path
-                      ? "text-primary active"
-                      : "text-foreground/80"
+                  className={`nav-link text-sm font-medium tracking-wide uppercase transition-colors duration-300 ${
+                    isHomePage && !isScrolled
+                      ? location.pathname === link.path
+                        ? "text-white active"
+                        : "text-white/80 hover:text-white"
+                      : location.pathname === link.path
+                        ? "text-primary active"
+                        : "text-foreground/80"
                   }`}
                 >
                   {link.name}
@@ -85,7 +89,7 @@ export const Navbar = () => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-foreground"
+              className={`lg:hidden p-2 ${isHomePage && !isScrolled ? "text-white" : "text-foreground"}`}
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
