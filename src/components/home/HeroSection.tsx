@@ -49,7 +49,7 @@ export const HeroSection = () => {
           >
             Experience a New
             <br />
-            <span className="gradient-text-warm">Standard of Care</span>
+            <span className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]" style={{ textShadow: '0 0 30px rgba(255,255,255,0.3)' }}>Standard of Care</span>
           </motion.h1>
 
           {/* Subheading */}
