@@ -93,7 +93,7 @@ export const Navbar = () => {
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6 text-black" />
               ) : (
                 <Menu className="w-6 h-6" />
               )}
